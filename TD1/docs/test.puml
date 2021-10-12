@@ -1,0 +1,107 @@
+@startuml
+class td1.refactor.api.bigburger.BigBurgerRestaurant {
+- {static} BigBurgerRestaurant instance
++ {static} BurgerRestaurant queue()
+}
+class td1.refactor.api.general.Meat {
+- MeatType type
+- double weight
++ double price()
++ double weight()
++ String toString()
+}
+class td1.refactor.client.App {
++ {static} void main(String[])
+}
+class td1.refactor.api.macdeau.MacDeauCook {
+- String name
+- List<FoodProduct> products
++ Burger cook()
+}
+class td1.refactor.api.general.BurgerAdvisor {
+- {static} BurgerAdvisor instance
+- {static} Map<Tariff,List<BurgerRestaurant>> registry
++ {static} BurgerAdvisor instance()
++ {static} void register(Tariff,BurgerRestaurant)
++ BurgerRestaurant select(Tariff)
+}
+class td1.refactor.api.general.Sauce {
+- {static} double BASE_PRICE
+- SauceType type
+- double weight
++ double price()
++ double weight()
++ String toString()
+}
+class td1.refactor.api.macdeau.MacDeauRestaurant {
+- {static} MacDeauRestaurant instance
++ {static} BurgerRestaurant queue()
++ BurgerCook order_menu(MenuType)
++ BurgerCook order_personal(Size,Meat.MeatType)
+}
+interface td1.refactor.api.general.BurgerRestaurant {
+~ BurgerCook order_menu(MenuType)
+~ BurgerCook order_personal(Size,Meat.MeatType)
+}
+class td1.refactor.api.general.Tomato {
+- double weight
+- double BASE_PRICE
++ double weight()
++ double price()
++ String toString()
+}
+class td1.refactor.api.general.Cheddar {
+- double weight
+- double BASE_PRICE
++ double weight()
++ double price()
++ String toString()
+}
+interface td1.refactor.api.general.FoodProduct {
+~ double calories()
+}
+interface td1.refactor.api.general.BurgerCook {
+~ BurgerCook with_cheese()
+~ BurgerCook with_onions()
+~ BurgerCook with_sauce(Sauce.SauceType)
+~ BurgerCook with_tomato()
+~ Burger cook()
+}
+interface td1.refactor.api.general.Product {
+~ double weight()
+~ double price()
+}
+abstract class td1.refactor.api.general.Burger {
+~ String name
+~ List<FoodProduct> items
++ double calories_per_100g()
++ double calories()
++ double weight()
++ double price()
++ String toString()
+}
+class td1.refactor.api.macdeau.MacDeauBurger {
+}
+interface td1.refactor.api.general.FoodConstituent {
++ double calories_per_100g()
+}
+class td1.refactor.api.general.DeepFriedOnions {
+- double weight
+- double BASE_PRICE
++ double weight()
++ double price()
++ String toString()
+}
+
+
+td1.refactor.api.general.BurgerRestaurant <|.. td1.refactor.api.bigburger.BigBurgerRestaurant
+td1.refactor.api.general.Product <|.. td1.refactor.api.general.Meat
+td1.refactor.api.general.Product <|.. td1.refactor.api.general.Sauce
+td1.refactor.api.macdeau.BurgerRestaurant <|.. td1.refactor.api.macdeau.MacDeauRestaurant
+td1.refactor.api.general.FoodProduct <|.. td1.refactor.api.general.Tomato
+td1.refactor.api.general.FoodProduct <|.. td1.refactor.api.general.Cheddar
+td1.refactor.api.general.FoodConstituent <|-- td1.refactor.api.general.FoodProduct
+td1.refactor.api.general.Product <|-- td1.refactor.api.general.FoodProduct
+td1.refactor.api.general.FoodProduct <|.. td1.refactor.api.general.Burger
+td1.refactor.api.general.Product <|.. td1.refactor.api.general.DeepFriedOnions
+@enduml
