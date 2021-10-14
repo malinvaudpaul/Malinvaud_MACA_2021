@@ -13,6 +13,7 @@ public class MacDeauRestaurant implements BurgerRestaurant {
         if(instance == null){
 
         }
+        return null ;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class MacDeauRestaurant implements BurgerRestaurant {
     }
 
     @Override
-    public BurgerCook order_personal(Size size, Meat.MeatType type) {
+    public BurgerCook order_personal(Size size, MeatType type) {
         return null;
     }
 }

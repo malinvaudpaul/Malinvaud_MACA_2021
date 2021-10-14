@@ -1,4 +1,4 @@
-package td1.refactor.api.macdeau;
+package td1.refactor.api.bigburger;
 
 import td1.refactor.api.general.Burger;
 import td1.refactor.api.general.BurgerCook;
@@ -7,11 +7,11 @@ import td1.refactor.api.general.SauceType;
 
 import java.util.List;
 
-public class MacDeauCook implements BurgerCook {
+public class BigBurgerCook implements BurgerCook {
     private String name ;
     private List<FoodProduct> products ;
 
-    public MacDeauCook(String name, List<FoodProduct> products) {
+    public BigBurgerCook(String name, List<FoodProduct> products) {
         this.name = name;
         this.products = products;
     }
@@ -40,4 +40,5 @@ public class MacDeauCook implements BurgerCook {
     public Burger cook() {
         return null;
     }
+
 }

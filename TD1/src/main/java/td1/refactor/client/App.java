@@ -7,8 +7,8 @@ import td1.refactor.api.bigburger.BigBurgerRestaurant;
 import static td1.refactor.api.general.Tariff.*;
 import static td1.refactor.api.general.Size.*;
 import static td1.refactor.api.general.MenuType.*;
-import static td1.refactor.api.general.Meat.MeatType.*;
-import static td1.refactor.api.general.Sauce.SauceType.*;
+import static td1.refactor.api.general.MeatType.*;
+import static td1.refactor.api.general.SauceType.*;
 
 import java.util.Arrays;
 import java.util.List;

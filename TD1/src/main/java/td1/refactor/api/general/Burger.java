@@ -2,7 +2,7 @@ package td1.refactor.api.general;
 
 import java.util.List;
 
-public abstract class Burger implements FoodProduct {
+public abstract class Burger {
 
     String name;
     List<FoodProduct> items;
@@ -12,24 +12,20 @@ public abstract class Burger implements FoodProduct {
         this.items = items;
     }
 
-    @Override
     public double calories_per_100g() {
-        return 0;
+        return items.stream().map(FoodProduct::calories_per_100g).reduce(0.0, Double::sum);
     }
 
-    @Override
     public double calories() {
         return items.stream().map(FoodProduct::calories).reduce(0.0, Double::sum);
     }
 
-    @Override
     public double weight() {
-        return items.stream().map(Product::weight).reduce(0.0, Double::sum);
+        return items.stream().map(FoodProduct::weight).reduce(0.0, Double::sum);
     }
 
-    @Override
     public double price() {
-        return items.stream().map(Product::price).reduce(0.0, Double::sum);
+        return items.stream().map(FoodProduct::price).reduce(0.0, Double::sum);
     }
 
     @Override
