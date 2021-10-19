@@ -30,9 +30,6 @@ public class Theme {
 
     @Override
     public String toString() {
-        return "Forum{" +
-                "topic='" + topic + '\'' +
-                ", children=" + children +
-                '}';
+        return "Theme:" + topic + '\n' + children.toString();
     }
 }

@@ -15,9 +15,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "topic='" + topic + '\'' +
-                ", contenu='" + contenu + '\'' +
-                '}';
+        return "Message:" + topic + '\n';
     }
 }
