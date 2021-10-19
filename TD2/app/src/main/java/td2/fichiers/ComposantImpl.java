@@ -2,7 +2,7 @@ package td2.fichiers;
 
 public abstract class ComposantImpl implements IComposant{
     private final String name ;
-    private Owner owner ;
+    public Owner owner ;
 
     public ComposantImpl(String name, Owner owner) {
         this.name = name;
@@ -11,12 +11,12 @@ public abstract class ComposantImpl implements IComposant{
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public Owner getOwner() {
-        return null;
+        return owner;
     }
 
     @Override

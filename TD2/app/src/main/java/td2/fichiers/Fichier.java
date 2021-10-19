@@ -9,27 +9,27 @@ public class Fichier extends ComposantImpl implements IComposant{
     }
 
     @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
     public int getSize() {
-        return 0;
+        return content.length();
     }
 
     @Override
     public String getContent() {
-        return null;
+        return content.toString();
     }
 
     @Override
     public void appendContent(String name) {
-
+        content.append(name);
     }
 
     @Override
     public boolean isComposite() {
-        return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

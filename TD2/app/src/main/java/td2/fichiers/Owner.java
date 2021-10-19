@@ -1,7 +1,7 @@
 package td2.fichiers;
 
 public class Owner {
-    private String name ;
+    private final String name ;
 
     public Owner(String name) {
         this.name = name;

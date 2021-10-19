@@ -3,34 +3,30 @@ package td2.fichiers;
 import java.util.List;
 
 public class Repertoire extends ComposantImpl implements IComposant, IComposite {
+    private List<IComposant> children ;
 
     public Repertoire(String name, Owner owner) {
         super(name, owner);
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
-
-    @Override
-    public Owner getOwner() {
-        return null;
-    }
-
-    @Override
     public void setOwner(Owner owner, boolean recursive) {
-
+        this.owner = owner ;
+        if(recursive && isComposite()){
+            for(IComposant c : children){
+                c.setOwner(owner);
+            }
+        }
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return children.getSize();
     }
 
     @Override
     public String getContent() {
-        return null;
+        return children.getName();
     }
 
     @Override
@@ -39,13 +35,8 @@ public class Repertoire extends ComposantImpl implements IComposant, IComposite 
     }
 
     @Override
-    public boolean isComposite() {
-        return false;
-    }
-
-    @Override
     public List getChildren() {
-        return null;
+        return children;
     }
 
     @Override
@@ -61,5 +52,15 @@ public class Repertoire extends ComposantImpl implements IComposant, IComposite 
     @Override
     public boolean removeChildren(List t) {
         return false;
+    }
+
+    @Override
+    public boolean isComposite() {
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }
