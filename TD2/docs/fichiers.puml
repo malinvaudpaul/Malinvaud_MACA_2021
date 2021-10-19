@@ -1,0 +1,50 @@
+@startuml
+interface td2.fichiers.IComposant {
+~ String getName()
+~ String getContent()
+~ Owner getOwner()
+~ int getSize()
+~ void appendContent(String)
+~ void setOwner(Owner)
+}
+class td2.fichiers.Composant {
+- ComposantType type
+- String name
+- String content
+- int size
+- Owner proprio
++ String getName()
++ String getContent()
++ Owner getOwner()
++ int getSize()
++ void appendContent(String)
++ void setOwner(Owner)
+}
+class td2.fichiers.Composite {
++ void addChild()
++ List<Composant> getChildren()
++ void removeChild()
++ void removeChildren()
+}
+interface td2.fichiers.IComposite {
+~ void addChild()
+~ List<Composant> getChildren()
+~ void removeChild()
+~ void removeChildren()
+}
+class td2.fichiers.FSFactory {
+- {static} FSFactory INSTANCE
++ {static} FSFactory getInstance()
++ Composant createComposant(ComposantType,String,Owner)
+}
+class td2.fichiers.Owner {
+- String name
+}
+class td2.fichiers.App {
++ {static} void main(String[])
+}
+
+
+td2.fichiers.IComposant <|.. td2.fichiers.Composant
+td2.fichiers.IComposite <|.. td2.fichiers.Composite
+@enduml

@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Composite<T> implements IComposite{
     @Override
-    public void addChild() {
-
-    }
-
-    @Override
-    public List<Composant> getChildren() {
+    public List getChildren() {
         return null;
     }
 
     @Override
-    public void removeChild() {
+    public void addChild(Object o) {
 
     }
 
     @Override
-    public void removeChildren() {
+    public boolean removeChild(Object o) {
+        return false;
+    }
 
+    @Override
+    public boolean removeChildren(List t) {
+        return false;
     }
 }

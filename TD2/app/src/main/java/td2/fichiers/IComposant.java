@@ -2,9 +2,10 @@ package td2.fichiers;
 
 public interface IComposant {
     String getName();
-    String getContent() ;
     Owner getOwner() ;
+    void setOwner(Owner owner, boolean recursive);
     int getSize() ;
-    void appendContent(String chaine) ;
-    void setOwner(Owner proprio);
+    String getContent() ;
+    void appendContent(String name) ;
+    boolean isComposite();
 }

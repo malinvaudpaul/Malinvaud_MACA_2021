@@ -1,18 +1,11 @@
 package td2.fichiers;
 
-public class Composant implements IComposant{
-    private ComposantType type ;
-    private String name ;
-    private String content ;
-    private int size ;
-    private Owner proprio ;
+import java.util.List;
 
-    public Composant(ComposantType type, String name, Owner proprio) {
-        this.type = type;
-        this.name = name;
-        this.content = "";
-        this.size = 0 ;
-        this.proprio = proprio;
+public class Repertoire extends ComposantImpl implements IComposant, IComposite {
+
+    public Repertoire(String name, Owner owner) {
+        super(name, owner);
     }
 
     @Override
@@ -47,6 +40,26 @@ public class Composant implements IComposant{
 
     @Override
     public boolean isComposite() {
+        return false;
+    }
+
+    @Override
+    public List getChildren() {
+        return null;
+    }
+
+    @Override
+    public void addChild(Object o) {
+
+    }
+
+    @Override
+    public boolean removeChild(Object o) {
+        return false;
+    }
+
+    @Override
+    public boolean removeChildren(List t) {
         return false;
     }
 }
