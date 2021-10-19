@@ -1,6 +1,6 @@
 package td2.fichiers;
 
-public class ComposantImpl implements IComposant{
+public abstract class ComposantImpl implements IComposant{
     private final String name ;
     private Owner owner ;
 
