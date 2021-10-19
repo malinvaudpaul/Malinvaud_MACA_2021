@@ -9,7 +9,10 @@ public class FSFactory {
         return INSTANCE ;
     }
 
-    public Composant createComposant(ComposantType type, String name, Owner proprio){
-        return new Composant(type, name, proprio);
+    public Composant createComposant(ComposantType type, String name, Owner owner){
+        switch (type) {
+            case REPERTOIRE: return new Repertoire(name, owner);
+            default: return new Fichier(name, owner);
+        }
     }
 }

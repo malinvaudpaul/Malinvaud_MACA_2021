@@ -1,35 +1,36 @@
 package td2.fichiers;
 
-public class Fichier extends ComposantImpl implements IComposant{
+public final class Fichier extends ComposantImpl implements Composant{
 
-    private StringBuilder content ;
+    private final StringBuilder content ;
 
-    public Fichier(String name, Owner owner) {
+    Fichier(String name, Owner owner) {
         super(name, owner);
+        content = new StringBuilder() ;
     }
 
     @Override
     public int getSize() {
-        return content.length();
+        return this.content.length();
     }
 
     @Override
     public String getContent() {
-        return content.toString();
+        return this.content.toString();
     }
 
     @Override
-    public void appendContent(String name) {
-        content.append(name);
+    public void appendContent(String content) {
+        this.content.append(content);
     }
 
     @Override
     public boolean isComposite() {
-        return true;
+        return false;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return getContent();
     }
 }

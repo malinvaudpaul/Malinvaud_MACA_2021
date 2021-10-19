@@ -1,57 +1,24 @@
 package td2.fichiers;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Repertoire extends ComposantImpl implements IComposant, IComposite {
-    private List<IComposant> children ;
+public final class Repertoire extends ComposantImpl implements Composant, Composite<Composant> {
+    private List<Composant> children ;
 
-    public Repertoire(String name, Owner owner) {
+    Repertoire(String name, Owner owner) {
         super(name, owner);
+        children = new ArrayList<>();
     }
 
     @Override
     public void setOwner(Owner owner, boolean recursive) {
-        this.owner = owner ;
+        super.setOwner(owner, recursive);
         if(recursive && isComposite()){
-            for(IComposant c : children){
-                c.setOwner(owner);
-            }
+            this.children.forEach(c -> {
+                c.setOwner(owner, recursive);
+            });
         }
-    }
-
-    @Override
-    public int getSize() {
-        return children.getSize();
-    }
-
-    @Override
-    public String getContent() {
-        return children.getName();
-    }
-
-    @Override
-    public void appendContent(String name) {
-
-    }
-
-    @Override
-    public List getChildren() {
-        return children;
-    }
-
-    @Override
-    public void addChild(Object o) {
-
-    }
-
-    @Override
-    public boolean removeChild(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean removeChildren(List t) {
-        return false;
     }
 
     @Override
@@ -60,7 +27,46 @@ public class Repertoire extends ComposantImpl implements IComposant, IComposite 
     }
 
     @Override
+    public List<Composant> getChildren() {
+        return new ArrayList<>(this.children);
+    }
+
+    @Override
+    public void addChild(Composant composant) {
+        this.children.add(composant);
+    }
+
+    @Override
+    public boolean removeChild(Composant composant) {
+        return this.children.remove(composant);
+    }
+
+    @Override
+    public boolean removeChildren(List<Composant> t) {
+        return this.children.removeAll(t);
+    }
+
+    @Override
+    public int getSize() {
+        return this.children.size();
+    }
+
+    @Override
+    public String getContent() {
+        StringBuilder content = new StringBuilder() ;
+        this.children.forEach(c -> {
+            content.append(c.getName()).append("\n") ;
+        });
+        return content.toString();
+    }
+
+    @Override
+    public void appendContent(String name) {
+        throw new UnsupportedOperationException("Cannot append a content of a directory") ;
+    }
+
+    @Override
     public String toString() {
-        return super.toString();
+        return getContent();
     }
 }

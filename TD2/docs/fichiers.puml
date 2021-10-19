@@ -1,36 +1,48 @@
 @startuml
-interface td2.fichiers.IComposant {
-~ String getName()
-~ String getContent()
-~ Owner getOwner()
-~ int getSize()
-~ void appendContent(String)
-~ void setOwner(Owner)
-}
-class td2.fichiers.Composant {
-- ComposantType type
-- String name
-- String content
-- int size
-- Owner proprio
-+ String getName()
-+ String getContent()
-+ Owner getOwner()
-+ int getSize()
-+ void appendContent(String)
-+ void setOwner(Owner)
-}
-class td2.fichiers.Composite {
-+ void addChild()
+class td2.fichiers.Repertoire {
+- List<Composant> children
++ void setOwner(Owner,boolean)
++ boolean isComposite()
 + List<Composant> getChildren()
-+ void removeChild()
-+ void removeChildren()
++ void addChild(Composant)
++ boolean removeChild(Composant)
++ boolean removeChildren(List<Composant>)
++ int getSize()
++ String getContent()
++ void appendContent(String)
++ String toString()
 }
-interface td2.fichiers.IComposite {
-~ void addChild()
-~ List<Composant> getChildren()
-~ void removeChild()
-~ void removeChildren()
+class td2.fichiers.Fichier {
+- StringBuilder content
++ int getSize()
++ String getContent()
++ void appendContent(String)
++ boolean isComposite()
++ String toString()
+}
+interface td2.fichiers.Composant {
+~ String getName()
+~ Owner getOwner()
+~ void setOwner(Owner,boolean)
+~ int getSize()
+~ String getContent()
+~ void appendContent(String)
+~ boolean isComposite()
+}
+interface td2.fichiers.Composite {
+~ List<T> getChildren()
+~ void addChild(T)
+~ boolean removeChild(T)
+~ boolean removeChildren(List<T>)
+}
+abstract class td2.fichiers.ComposantImpl {
+- String name
+- Owner owner
++ String getName()
++ Owner getOwner()
++ void setOwner(Owner,boolean)
++ int hashCode()
++ boolean equals(Object)
 }
 class td2.fichiers.FSFactory {
 - {static} FSFactory INSTANCE
@@ -39,12 +51,19 @@ class td2.fichiers.FSFactory {
 }
 class td2.fichiers.Owner {
 - String name
++ String getName()
++ int hashCode()
++ boolean equals(Object)
 }
 class td2.fichiers.App {
 + {static} void main(String[])
 }
 
 
-td2.fichiers.IComposant <|.. td2.fichiers.Composant
-td2.fichiers.IComposite <|.. td2.fichiers.Composite
+td2.fichiers.Composant <|.. td2.fichiers.Repertoire
+td2.fichiers.Composite <|.. td2.fichiers.Repertoire
+td2.fichiers.ComposantImpl <|-- td2.fichiers.Repertoire
+td2.fichiers.Composant <|.. td2.fichiers.Fichier
+td2.fichiers.ComposantImpl <|-- td2.fichiers.Fichier
+td2.fichiers.Composant <|.. td2.fichiers.ComposantImpl
 @enduml

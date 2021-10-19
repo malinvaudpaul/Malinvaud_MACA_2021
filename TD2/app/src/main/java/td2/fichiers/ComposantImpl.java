@@ -1,8 +1,10 @@
 package td2.fichiers;
 
-public abstract class ComposantImpl implements IComposant{
+import java.util.Objects;
+
+public abstract class ComposantImpl implements Composant{
     private final String name ;
-    public Owner owner ;
+    private Owner owner ;
 
     public ComposantImpl(String name, Owner owner) {
         this.name = name;
@@ -11,26 +13,29 @@ public abstract class ComposantImpl implements IComposant{
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     @Override
     public Owner getOwner() {
-        return owner;
+        return this.owner;
     }
 
     @Override
     public void setOwner(Owner owner, boolean recursive) {
-
+        this.owner = owner ;
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(this.getName());
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true ;
+        if (obj == null || getClass() != obj.getClass()) return false ;
+        Fichier fichier = (Fichier)obj;
+        return Objects.equals(this .getName(),fichier.getName()) ;
     }
 }
