@@ -2,7 +2,6 @@ package td2.forums;
 
 public class App {
     public static void main(String [] args){
-        /*
         Forum forum = new Forum("Programmation orientée objet");
         Theme theme1 = new Theme("Constructeurs");
         Theme theme2 = new Theme("Design patterns");
@@ -11,8 +10,7 @@ public class App {
         Salon salon3 = new Salon("Pattern Composite");
         Message message1 = new Message("J’ai un problème", "voila, j’ai essayé ...");
         Message message2 = new Message("Au secours","ça marche pas ...");
-        Message message3 = new Message("Différence ?", "quelle est la
-                différence entre l’aggregation et la composition ");
+        Message message3 = new Message("Différence ?", "quelle est la différence entre l’aggregation et la composition ");
                 Message message4 = new Message("Question","quand utilise-t-on le pattern composite ?");
         forum.add(theme1);
         forum.add(theme2);
@@ -24,6 +22,5 @@ public class App {
         salon2.add(message3);
         salon3.add(message4);
         System.out.println(forum.toString());
-        */
     }
 }
