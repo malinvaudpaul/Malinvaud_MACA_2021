@@ -1,0 +1,65 @@
+@startuml
+!include commons.style
+
+package td2.forums {
+
+class Forum {
+    -topic : String
+    --
+    -this(topic,children) : Forum
+    ..
+    +sujet() : String
+    ..
+    +add() : void
+    +remove() : void
+    +size() : int
+    ..
+    +toString() : String
+}
+
+class Theme {
+    -topic : String
+    --
+    -this(topic,children) : Theme
+    ..
+    +sujet() : String
+    ..
+    +add() : void
+    +remove() : void
+    +size() : int
+    ..
+    +toString() : String
+}
+
+class Salon {
+    -topic : String
+    --
+    -this(topic,children) : Salon
+    ..
+    +sujet() : String
+    ..
+    +add() : void
+    +remove() : void
+    +size() : int
+    ..
+    +toString() : String
+}
+
+class Message {
+    -topic : string "final"
+    -contenu : string "final"
+    --
+    +this(topic: string, contenu: string) : Message
+    ..
+    +sujet(): string
+    ..
+    +toString(): string
+}
+
+Forum "-" *--> "*" Theme : children
+Theme "-" *--> "*" Salon : children
+Salon "-" *--> "*" Message : children
+
+}
+
+@enduml
