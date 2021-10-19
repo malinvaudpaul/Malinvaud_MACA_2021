@@ -2,6 +2,7 @@ package td2.forums;
 
 public class App {
     public static void main(String [] args){
+        /*
         Forum forum = new Forum("Programmation orientée objet");
         Theme theme1 = new Theme("Constructeurs");
         Theme theme2 = new Theme("Design patterns");
@@ -23,5 +24,6 @@ public class App {
         salon2.add(message3);
         salon3.add(message4);
         System.out.println(forum.toString());
+        */
     }
 }

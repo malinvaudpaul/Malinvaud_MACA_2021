@@ -8,4 +8,8 @@ public class FSFactory {
     public static FSFactory getInstance(){
         return INSTANCE ;
     }
+
+    public Composant createComposant(ComposantType type, String name, Owner proprio){
+        return new Composant(type, name, proprio);
+    }
 }
