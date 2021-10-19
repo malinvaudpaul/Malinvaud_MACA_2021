@@ -30,6 +30,13 @@ public class Salon {
 
     @Override
     public String toString() {
-        return "Salon:" + topic + '\n' + children.toString();
+        StringBuilder forum = new StringBuilder();
+        forum.append("Salon: ");
+        forum.append(topic);
+        forum.append("\n");
+        this.children.forEach(c -> {
+            forum.append(c);
+        });
+        return forum.toString() ;
     }
 }
