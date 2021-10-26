@@ -1,5 +1,5 @@
 package td3.exceptions;
 
-public class MonException {
+public class MonException extends Throwable {
 
 }

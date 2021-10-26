@@ -1,8 +1,11 @@
 package td3.main;
 
-import commandes.*;
-import exceptions.MonException;
-import visitors.*;
+
+import td3.commandes.*;
+import td3.exceptions.MonException;
+import td3.visitors.*;
+import td3.visitorsImplements.PrintRapportCommandes;
+import td3.visitorsImplements.XMLRapportCommandes;
 
 public final class Main {
 	private final GroupeClient groupeClient;
