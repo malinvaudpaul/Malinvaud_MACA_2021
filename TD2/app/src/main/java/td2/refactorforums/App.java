@@ -1,9 +1,9 @@
 package td2.refactorforums;
 
-import td2.forums.Forum;
-import td2.forums.Message;
-import td2.forums.Salon;
-import td2.forums.Theme;
+import td2.refactorforums.Forum;
+import td2.refactorforums.Message;
+import td2.refactorforums.Salon;
+import td2.refactorforums.Theme;
 
 public class App {
     public static void main(String [] args){
