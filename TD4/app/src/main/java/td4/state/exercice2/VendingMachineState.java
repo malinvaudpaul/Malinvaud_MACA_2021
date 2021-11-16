@@ -14,5 +14,10 @@ public abstract class VendingMachineState {
 
     public abstract void askTea(VendingMachineContext c) throws IncorrectStateException;
 
-    public abstract int getRefund(VendingMachineContext c) throws IncorrectStateException;
+    public int getRefund(VendingMachineContext c){
+        c.setState(VendingMachineStateBegin.getInstance());
+        int cash = c.getCash();
+        c.setCash(0);
+        return cash;
+    };
 }

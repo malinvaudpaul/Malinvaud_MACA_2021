@@ -3,12 +3,12 @@ package td4.state.exercice2;
 import td4.state.IncorrectStateException;
 import td4.state.exercice1.SimpleVendingMachineContext;
 import td4.state.exercice1.SimpleVendingMachineState;
-import td4.state.exercice1.SimpleVendingMachineStateChoice;
+import td4.state.exercice1.SimpleVendingMachineStateBegin;
 
-public class VendingMachineStateBegin extends VendingMachineState {
-    private static final VendingMachineState INSTANCE = new VendingMachineStateBegin() ;
+public class VendingMachineStateChoice extends VendingMachineState {
+    private static final VendingMachineState INSTANCE = new VendingMachineStateChoice();
 
-    private VendingMachineStateBegin() {}
+    private VendingMachineStateChoice() {}
 
     public static VendingMachineState getInstance() {
         return INSTANCE ;
@@ -16,22 +16,16 @@ public class VendingMachineStateBegin extends VendingMachineState {
 
     @Override
     public void give(VendingMachineContext c, int money) throws IncorrectStateException {
-        if(c.getCash() + money < 10) {
-            c.setCash(c.getCash() + money);
-        }
-        else {
-            c.setCash(c.getCash() + money);
-            c.setState(VendingMachineStateEnough.getInstance());
-        }
+        System.out.println("il est temps de faire un choix");
     }
 
     @Override
     public void askCoffee(VendingMachineContext c) throws IncorrectStateException {
-        System.out.println("pas possible");
+        System.out.println("il est temps de faire un choix");
     }
 
     @Override
     public void askTea(VendingMachineContext c) throws IncorrectStateException {
-        System.out.println("pas possible");
+        System.out.println("il est temps de faire un choix");
     }
 }
