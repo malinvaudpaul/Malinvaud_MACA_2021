@@ -5,32 +5,33 @@ import td3.visitables.Visitable;
 import td3.visitors.PrePostVisitor;
 import td3.visitors.Visitor;
 
-import java.util.HashSet;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 public class GroupeClient implements PrePostVisitable, Visitable {
-    private String name ;
-    private Collection<Client> clients ;
+    private final String name ;
+    private final Map<String, Client> clients ;
 
     public GroupeClient(String name) {
         this.name = name;
-        this.clients = new HashSet<>();
+        this.clients = new HashMap<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Client> getClients() {
+        return clients;
     }
 
     public void addClient(Client client){
-        this.clients.add(client);
+        this.clients.put(client.getName(),client);
     }
 
     public void addCommande(String name, Commande commande){
-        Iterator iterator = this.clients.iterator();
-        while(iterator.hasNext()) {
-            Client client = this.clients.iterator().next() ;
-            if(client.getName().equals(name)){
-                client.addCommande(commande);
-            }
-        }
+        Client c = this.clients.get(name) ;
+        if(c!= null){c.addCo(name, commande);}
+        //else throw new MonException("commande inconnue");
     }
 
     public void addLigne(String name, String commande, Ligne ligne){
@@ -45,22 +46,15 @@ public class GroupeClient implements PrePostVisitable, Visitable {
 
     @Override
     public void accept(PrePostVisitor v) {
-        Iterator iterator = this.clients.iterator();
-        System.out.println("<groupe>");
-        while(iterator.hasNext()) {
-            Client client = this.clients.iterator().next() ;
-            client.accept(v);
-        }
-        System.out.println("</groupe>");
+        v.preVisit(this);
+        for(Client c: clients.values()) c.accept(v);
+        v.postVisit(this);
     }
 
     @Override
     public void accept(Visitor v) {
-        Iterator iterator = this.clients.iterator();
-        while(iterator.hasNext()) {
-            Client client = this.clients.iterator().next() ;
-            client.accept(v);
-        }
+        for(Client c: clients.values()) c.accept(v);
+        v.visit(this);
     }
 
     @Override

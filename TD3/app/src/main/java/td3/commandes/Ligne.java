@@ -20,18 +20,23 @@ public class Ligne implements PrePostVisitable, Visitable {
         this.sum = sum;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getSum() {
         return sum;
     }
 
     @Override
     public void accept(PrePostVisitor v) {
-
+        v.preVisit(this);
+        v.postVisit(this);
     }
 
     @Override
     public void accept(Visitor v) {
-
+        v.visit(this);
     }
 
     @Override

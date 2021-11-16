@@ -5,18 +5,15 @@ import td3.visitables.Visitable;
 import td3.visitors.PrePostVisitor;
 import td3.visitors.Visitor;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 public class Commande implements PrePostVisitable, Visitable {
-    private String name ;
-    private Collection<Ligne> lignes ;
+    private final String name ;
+    private final Map<String, Ligne> lignes ;
 
     public Commande(String name) {
         this.name = name;
-        this.lignes = new HashSet<>();
+        this.lignes = new HashMap<>();
     }
 
     public String getName() {
@@ -24,29 +21,20 @@ public class Commande implements PrePostVisitable, Visitable {
     }
 
     public void addLigne(Ligne ligne){
-        this.lignes.add(ligne);
+        this.lignes.put(ligne.getName(), ligne);
     }
 
     @Override
     public void accept(PrePostVisitor v) {
-        Iterator iterator = this.lignes.iterator();
-        System.out.println("<ligne>");
-        while(iterator.hasNext()) {
-            Ligne ligne = this.lignes.iterator().next() ;
-            ligne.accept(v);
-        }
-        System.out.println("</ligne>");
+        v.preVisit(this);
+        for(Ligne l: lignes.values()) l.accept(v);
+        v.postVisit(this);
     }
 
     @Override
     public void accept(Visitor v) {
-        Iterator iterator = this.lignes.iterator();
-        int sum = 0 ;
-        while(iterator.hasNext()) {
-            Ligne ligne = this.lignes.iterator().next() ;
-            sum += ligne.getSum() ;
-        }
-        System.out.println(String.format("doit %d euros",sum));
+        for(Ligne l: lignes.values()) l.accept(v);
+        v.visit(this);
     }
 
     @Override

@@ -12,7 +12,7 @@ public class XMLRapportCommandes implements PrePostVisitor {
 
     @Override
     public void preVisit(GroupeClient gc) {
-
+        System.out.println("<groupe");
     }
 
     @Override
@@ -27,7 +27,7 @@ public class XMLRapportCommandes implements PrePostVisitor {
 
     @Override
     public void preVisit(Ligne ligne) {
-
+        System.out.println();
     }
 
     @Override
