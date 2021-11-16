@@ -1,14 +1,15 @@
-package td4;
+package td4.exercice1;
 
 import td4.state.*;
+import td4.state.exercice1.SimpleVendingMachineContext;
 
 /**
- * Created with IntelliJ IDEA. User: pascalpoizat Date: 09/12/2013 Time: 11:29
+ * Created with IntelliJ IDEA. User: pascalpoizat Date: 09/12/2013 Time: 11:51
  * To change this template use File | Settings | File Templates.
  */
-public class VendingMachineTest1 {
+public class SimpleVendingMachineTest1 {
     public static void main(String[] args) {
-        VendingMachineContext machine = new VendingMachineContext();
+        SimpleVendingMachineContext machine = new SimpleVendingMachineContext();
         //
         try {
             machine.askCoffee();
@@ -24,12 +25,18 @@ public class VendingMachineTest1 {
         }
         //
         try {
-            machine.give(10); // { 15 }
-            machine.askCoffee(); // { 5 }
-            System.out.println(machine.getRefund()); // 5
-            System.out.println(machine.getRefund()); // 0
+            machine.give(30); // { 35 }
+            machine.askCoffee(); // { 30 }
+        } catch (IncorrectStateException e) {
+            System.out.println(e);
+        }
+        //
+        try {
+            machine.give(1); // { 1 }
+            machine.askCoffee(); // { 1 }
         } catch (IncorrectStateException e) {
             System.out.println(e);
         }
     }
+
 }

@@ -1,4 +1,6 @@
-package td4.state;
+package td4.state.exercice2;
+
+import td4.state.IncorrectStateException;
 
 /**
  * Created with IntelliJ IDEA. User: pascalpoizat Date: 09/12/2013 Time: 10:49
