@@ -4,11 +4,12 @@
 package td5;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Unité u1 = new Unité();
+        u1.setAttaqueStrategy(new Canon());
+        u1.setDéplacementStrategy(new Rouler());
+        u1.combattre();
+        u1.seDéplacer();
     }
 }
