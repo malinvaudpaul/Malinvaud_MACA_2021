@@ -1,8 +1,8 @@
 package td5;
 
 public class Unité {
-    private Attaque attaqueStrategy;
-    private Déplacement déplacementStrategy;
+    Attaque attaqueStrategy;
+    Déplacement déplacementStrategy;
 
     public Unité() {
     }

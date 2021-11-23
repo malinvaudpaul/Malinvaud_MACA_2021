@@ -6,10 +6,17 @@ package td5;
 public class App {
 
     public static void main(String[] args) {
-        Unité u1 = new Unité();
-        u1.setAttaqueStrategy(new Canon());
-        u1.setDéplacementStrategy(new Rouler());
-        u1.combattre();
+        Unité u1 = new Soldat();
+        Unité u2 = new Char();
+        Unité u3 = new Helicoptère();
+
         u1.seDéplacer();
+        u1.combattre();
+        System.out.print("\n");
+        u2.seDéplacer();
+        u2.combattre();
+        System.out.print("\n");
+        u3.seDéplacer();
+        u3.combattre();
     }
 }
